@@ -243,10 +243,10 @@ AtmSearcher.prototype.setModalContent = function(i){
 	bluebirdLabel1.appendTo(bluebirdGroup);
 	var bluebirdDiv1 = $('<div class="col-sm-4"><select class="form-control" name="bluebirdStatus"><option value="0">--</option><option value="1">Ok</option><option value="2">Not Working</option></select></div>');
 	bluebirdDiv1.appendTo(bluebirdGroup);
-	var bluebirdLabel2 = $('<label class="col-sm-2 control-label">Amount:</label>');
-	bluebirdLabel2.appendTo(bluebirdGroup);
-	var bluebirdDiv2 = $('<div class="col-sm-3"><div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" name="bluebirdAmount" ></div></div>');
-	bluebirdDiv2.appendTo(bluebirdGroup);
+	//var bluebirdLabel2 = $('<label class="col-sm-2 control-label">Amount:</label>');
+	//bluebirdLabel2.appendTo(bluebirdGroup);
+	//var bluebirdDiv2 = $('<div class="col-sm-3"><div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" name="bluebirdAmount" ></div></div>');
+	//bluebirdDiv2.appendTo(bluebirdGroup);
 	bluebirdGroup.appendTo(this.modalForm);
 
 	var moneyOrderGroup = $('<div class="form-group"></div>');
@@ -254,10 +254,10 @@ AtmSearcher.prototype.setModalContent = function(i){
 	moneyOrderLabel1.appendTo(moneyOrderGroup);
 	var moneyOrderDiv1 = $('<div class="col-sm-4"><select class="form-control" name="moneyOrderStatus"><option value="0">--</option><option value="1">Ok</option><option value="2">Not Working</option></select></div>');
 	moneyOrderDiv1.appendTo(moneyOrderGroup);
-	var moneyOrderLabel2 = $('<label class="col-sm-2 control-label">Amount:</label>');
-	moneyOrderLabel2.appendTo(moneyOrderGroup);
-	var moneyOrderDiv2 = $('<div class="col-sm-3"><div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" name="moneyOrderAmount" ></div></div>');
-	moneyOrderDiv2.appendTo(moneyOrderGroup);
+	//var moneyOrderLabel2 = $('<label class="col-sm-2 control-label">Amount:</label>');
+	//moneyOrderLabel2.appendTo(moneyOrderGroup);
+	//var moneyOrderDiv2 = $('<div class="col-sm-3"><div class="input-group"><span class="input-group-addon">$</span><input type="text" class="form-control" name="moneyOrderAmount" ></div></div>');
+	//moneyOrderDiv2.appendTo(moneyOrderGroup);
 	moneyOrderGroup.appendTo(this.modalForm);
 
 	this.modalForm.appendTo(this.modalBody);
