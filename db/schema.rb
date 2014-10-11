@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140903184052) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "atm_statuses", force: true do |t|
     t.integer  "money_order_status_id"
     t.string   "money_order_status_description"

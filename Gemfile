@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 
 gem 'twitter-bootstrap-rails'
+gem 'pg'
+
+ruby "2.1.1"
