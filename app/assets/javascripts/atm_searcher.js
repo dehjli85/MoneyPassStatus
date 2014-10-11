@@ -39,11 +39,27 @@ function AtmSearcher(searchForm, searchBox, searchButton, resultsDiv, alertDiv){
 
 }
 
+AtmSearcher.prototype.startCounter = function(){
+
+	//Clear search results
+	this.resultsDiv.html("");
+
+	//Put up progress bar
+	var progressDiv = $('<div class="progress" style="margin:10px; 0px; 10px 0px; "></div>');
+	var progressBar = $('<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">Searching...</div>');	
+	progressBar.appendTo(progressDiv);
+	progressDiv.appendTo(this.resultsDiv);
+	
+}
+
 AtmSearcher.prototype.search = function(){	
 
 	var obj = this;
 
 	obj.alertDiv.html("");
+
+	//put up a progress bar and start a counter
+	obj.startCounter();
 
 	//make ajax request
 	if(this.searchBox.val() != ""){
@@ -82,6 +98,10 @@ AtmSearcher.prototype.displayResults = function(){
 
 	var obj = this;
 
+	
+
+	//TODO: remove the progress bar
+	//clearInterval(intervalId);
 	this.resultsDiv.html("");
 
 	//create the HTML from the javascript object
