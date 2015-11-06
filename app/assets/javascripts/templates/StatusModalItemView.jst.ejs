@@ -1,0 +1,45 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h5 class="modal-title" id="myModalLabel" ui-title>ATM Status Tracking</h5>
+  </div>
+  <div class="modal-body" ui-body-div>
+    <div class="row">
+      <div class="col-sm-5 col-sm-offset-3">
+        <address>
+          <strong> <%= name %></strong><br/>
+          <%= street %><br>
+          <%= city %>, <%= state %> <%= postalCode %>
+        </address>
+      </div>
+    </div>
+    
+    <form class="form-horizontal" role="form" ui-atm-status-form>
+      
+      <input type="hidden" name="atm_status[atm_id]" value="<%= id %>" >
+      <input type="hidden" name="atm_status[status_check_date]" value="moment().toDate()" ui-status-check-date-input>
+
+      <div class="form-group">
+        
+        <label for="inputDate" class="col-sm-3 control-label">Date:</label>
+        
+        <div class="col-sm-7">
+          <input type="datetime-local" class="form-control" name="date_input" id="inputDate" value="<%= moment().format('YYYY-MM-DDTHH:mm:ss') %>" ui-datetime-input>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <!-- <label for="inputWorking" class="col-sm-3 control-label">Working?:</label> -->
+        <div class="col-sm-3 col-sm-offset-3">
+          <input type="checkbox" name="atm_status[working]" value="true"> &nbsp;Working?
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+  <div class="modal-footer" ui-footer-div>    
+    <button class="btn btn-primary" ui-save-button >Save</button>
+    <button class="btn btn-default" data-dismiss="modal">Close</button>	        
+  </div>
+</div>

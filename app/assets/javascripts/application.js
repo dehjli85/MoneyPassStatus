@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui.min
 //= require bootstrap.min
+//= require moment.min
+//= require underscore-min
+//= require backbone-min
+//= require backbone.marionette.min
 //= require_tree .

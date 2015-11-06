@@ -11,41 +11,24 @@ class MoneyPassController < ApplicationController
 		#find the ATM in the database
 		puts params
 
-		newAtmStatus = AtmStatus.new
-		newAtmStatus.atm_id = params[:atmId]
-		newAtmStatus.bluebird_status_id = params[:bluebirdStatus]
-		newAtmStatus.money_order_status_id = params[:moneyOrderStatus]
-		case newAtmStatus.bluebird_status_id
-		when 1
-			newAtmStatus.bluebird_status_description = "OK"
-		when 2
-			newAtmStatus.bluebird_status_description = "Not Working"
-		when 0
-			newAtmStatus.bluebird_status_description = "Unknown"
-		end
-		case newAtmStatus.money_order_status_id
-		when 1
-			newAtmStatus.money_order_status_description = "OK"
-		when 2
-			newAtmStatus.money_order_status_description = "Not Working"
-		when 0
-			newAtmStatus.money_order_status_description = "Unknown"
-		end
+    atm_status = AtmStatus.new(params.require(:atm_status).permit(:atm_id, :working, :status_check_date))    
+    puts params[:atm_status][:status_check_date]
+	  #   puts params[:atm_status][:date]
+	  #   puts params[:atm_status][:time]
 
-		d = Date.parse(params[:inputDate])
-		t = Time.parse(params[:inputTime])
-		newAtmStatus.status_check_date = DateTime.new(d.year, d.month, d.day, t.hour, t.min)
+			
+			# d = Date.parse(params[:atm_status][:date])
+			# t = Time.parse(params[:atm_status][:time])
+			# atm_status.status_check_date = DateTime.new(d.year, d.month, d.day, t.hour, t.min)
+			
+		# puts atm_status.status_check_date
 		
-
-		return_hash = Hash.new
-		if(newAtmStatus.save)
-			return_hash[:status] = 'ok'
+		if atm_status.save
+			render json: {status: "success"}
 		else
-			return_hash[:status] = 'fail'
+			render json: {status: "error"}
 		end
-		
-		
-		render json: return_hash
+
 	end
 
 	def search
@@ -69,16 +52,9 @@ class MoneyPassController < ApplicationController
 			end
 		end
 
-		atms = Atm.find(locationHash.keys)
-		status_hash = Hash.new
-		atms.each do |atm|
-			status_hash[atm.id] = atm.most_recent_status
-		end
+		atms = Atm.find(locationHash.keys).as_json
 
-		return_hash = Hash.new
-		return_hash[:atms] = atms
-		return_hash[:statuses] = status_hash		
-		render json: return_hash
+		render json: {atms: atms}
 
 		#check the latest status of the ATM
 		#respond_with(Atm.find(locationHash.keys))

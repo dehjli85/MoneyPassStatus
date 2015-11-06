@@ -1,0 +1,29 @@
+<td>
+	<address>
+		<strong><%= name %><br/></strong>
+		<%= street %><br/>
+		<%= city %>, <%= state %> <%= postalCode %>
+	</address>
+</td>
+<td class="table__status">	
+	<% if(most_recent_status == null){ %>
+		<a class="table__icon-link" ui-icon-link><i class="ion-help-circled"></i></a>
+	<% }else{ %> 
+		<a class="table__icon-link" ui-icon-link>
+
+			<% if(most_recent_status.working != null) { %>
+				<i class="ion-checkmark-circled success"></i><br/>
+			<% } else { %>
+				<i class="ion-close-circled fail"></i><br/>
+			<% } %>
+
+			<% if(moment().format("MM/YY") == moment(most_recent_status.status_check_date).format("MM/YY")){ %>
+				Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %>
+			<% }else{ %> 
+				<%= moment(most_recent_status.status_check_date).format("MM/DD/YY HH:mm a") %>
+			<% } %>
+
+		</a>
+			
+	<% } %>
+</td>

@@ -17,12 +17,9 @@ ActiveRecord::Schema.define(version: 20140903184052) do
   enable_extension "plpgsql"
 
   create_table "atm_statuses", force: true do |t|
-    t.integer  "money_order_status_id"
-    t.string   "money_order_status_description"
-    t.integer  "bluebird_status_id"
-    t.string   "bluebird_status_description"
-    t.datetime "status_check_date"
     t.integer  "atm_id"
+    t.datetime "status_check_date"
+    t.boolean  "working"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
