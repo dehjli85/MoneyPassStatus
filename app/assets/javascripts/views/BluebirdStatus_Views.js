@@ -29,6 +29,10 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 			events:{
 			},
 
+			initialize: function(){
+				App.Controller.geolocate(this);
+			},
+
 			onSearch: function(){
 
 				if(this.ui.searchInput.val() != ""){

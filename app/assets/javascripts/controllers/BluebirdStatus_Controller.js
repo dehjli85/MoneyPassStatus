@@ -89,6 +89,41 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 			
 				
+		},
+
+		geolocate: function(indexLayoutView){
+			var postUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCMBF1nphE0DPU4Og-_KE4h8f4lhkGLqjc";
+			var jqxhr = $.post( postUrl, {}, function(){
+				
+				console.log("post geolocation...");
+			
+			}).done(function(data){
+
+				console.log(data);
+
+				var lat = data.location.lat;
+				var lng = data.location.lng;
+
+				var postUrl2 = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&key=AIzaSyCMBF1nphE0DPU4Og-_KE4h8f4lhkGLqjc&result_type=postal_code";
+				var jqxhr2 = $.post( postUrl2, {}, function(){
+					
+					console.log("post reverse geocoding...");
+				
+				}).done(function(data2){
+
+					console.log(data2);
+
+					var zipcode = data2.results[0].address_components[0].long_name;
+					indexLayoutView.ui.searchInput.val(zipcode);
+
+
+				});	
+
+				
+
+
+			});	
+			
 		}
 
 		
