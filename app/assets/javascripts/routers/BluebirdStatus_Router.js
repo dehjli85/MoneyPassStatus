@@ -8,8 +8,6 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 	var API = {
 		
-
-		
 		
 	};
 

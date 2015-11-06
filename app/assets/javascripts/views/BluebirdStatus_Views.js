@@ -94,9 +94,10 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 			
 			e.preventDefault();
 
-			console.log(this.ui.datetimeInput.val());
 
 			this.ui.statusCheckDateInput.val(moment(this.ui.datetimeInput.val()).utc().format());
+
+			console.log(this.ui.statusCheckDateInput.val());
 
 			this.triggerMethod("save:atm:status");
 

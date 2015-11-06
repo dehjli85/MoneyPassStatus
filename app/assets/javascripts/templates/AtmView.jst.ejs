@@ -17,10 +17,10 @@
 				<i class="ion-close-circled fail"></i><br/>
 			<% } %>
 
-			<% if(moment().format("MM/YY") == moment(most_recent_status.status_check_date).format("MM/YY")){ %>
+			<% if(moment().format("MM/DD/YY") == moment(most_recent_status.status_check_date).format("MM/DD/YY")){ %>
 				Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %>
 			<% }else{ %> 
-				<%= moment(most_recent_status.status_check_date).format("MM/DD/YY HH:mm a") %>
+				<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %>
 			<% } %>
 
 		</a>
