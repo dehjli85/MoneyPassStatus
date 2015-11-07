@@ -13,6 +13,9 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 		},
 
 		search: function(indexLayoutView){
+
+			ga('send', 'event', 'search', '', indexLayoutView.ui.searchInput.val());
+
 			var getUrl = '/search?location=' + encodeURIComponent(indexLayoutView.ui.searchInput.val());
 
 			var jqxhr = $.get(getUrl, function(){
@@ -29,7 +32,6 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 				console.log(searchResultsCompositeView);
 				
-				// obj.displayResults();
 		  })
 		  .fail(function() {
 		  	console.log("error");
@@ -49,6 +51,8 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 		},
 
 		saveStatus: function(indexLayoutView, statusModalItemView){
+
+			ga('send', 'event', 'update', '', statusModalItemView.model.get("state"));
 
 			var postUrl = "/update";
 			var jqxhr = $.post( postUrl, statusModalItemView.ui.atmStatusForm.serialize(), function(){
