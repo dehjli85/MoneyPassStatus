@@ -20,3 +20,12 @@ i.fail{
 #results_region{
 	margin-top: 20px;
 }
+
+a.table__icon-link:hover, a.table__store-link:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a.table__store-link{
+	color:black;
+}

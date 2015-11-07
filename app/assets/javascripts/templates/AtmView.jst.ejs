@@ -1,13 +1,17 @@
 <td>
-	<address>
-		<strong><%= name %><br/></strong>
-		<%= street %><br/>
-		<%= city %>, <%= state %> <%= postalCode %>
-	</address>
+	<a href="http://www.google.com/maps/search/<%=  (name + "+" + street + "+" + city + "+" + state + "+" + postalCode).replace(/ ./, "+")  %>" class="table__store-link" target="_blank">
+		<address>
+			<strong><%= name %><br/></strong>
+			<%= street %><br/>
+			<%= city %>, <%= state %> <%= postalCode %>
+		</address>
+	</a>
 </td>
 <td class="table__status">	
 	<% if(most_recent_status == null){ %>
-		<a class="table__icon-link" ui-icon-link><i class="ion-help-circled"></i></a>
+		<a class="table__icon-link" ui-icon-link><i class="ion-help-circled"></i><br>
+			Update
+		</a>
 	<% }else{ %> 
 		<a class="table__icon-link" ui-icon-link>
 
@@ -17,11 +21,14 @@
 				<i class="ion-close-circled fail"></i><br/>
 			<% } %>
 
-			<% if(moment().format("MM/DD/YY") == moment(most_recent_status.status_check_date).format("MM/DD/YY")){ %>
-				Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %>
-			<% }else{ %> 
-				<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %>
-			<% } %>
+			<span style="color:#999999">
+				<% if(moment().format("MM/DD/YY") == moment(most_recent_status.status_check_date).format("MM/DD/YY")){ %>
+					Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %><br/>
+				<% }else{ %> 
+					<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %><br/>
+				<% } %>
+			</span>
+			Update
 
 		</a>
 			
