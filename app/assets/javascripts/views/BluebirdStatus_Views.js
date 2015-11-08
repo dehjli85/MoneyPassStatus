@@ -18,7 +18,8 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 				searchForm: "[ui-search-form]",
 				searchInput: "[ui-search-input]",
 				searchButton: "[ui-search-button]",
-				modalRegion: "#modal_region"
+				modalRegion: "#modal_region",
+				faqsButton: "[ui-faqs-button]"
 			},
 
 			triggers:{
@@ -27,6 +28,7 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 			},
 
 			events:{
+				"click @ui.faqsButton": "showFaqs"
 			},
 
 			initialize: function(){
@@ -39,6 +41,10 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 					BluebirdStatus.App.Controller.search(this);
 				}
 
+			},
+
+			showFaqs: function(){
+				App.Controller.showFaqs(this);
 			},
 
 			onChildviewOpenStatusModal: function(atmView){
@@ -113,6 +119,11 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 			this.$el.addClass(this.model.get("alertClass"));
 		}
 	});
+
+	App.FaqsView = Marionette.ItemView.extend({
+		template: JST["templates/FaqsView"],
+
+	})
 
 
 });

@@ -128,6 +128,14 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 			});	
 			
+		},
+
+		showFaqs: function(indexLayoutView){
+
+			var faqsView = new BluebirdStatus.App.FaqsView();
+
+			indexLayoutView.resultsRegion.show(faqsView);
+
 		}
 
 		
