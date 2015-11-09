@@ -14,7 +14,7 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 		search: function(indexLayoutView){
 
-			ga('send', 'event', 'search', '', indexLayoutView.ui.searchInput.val());
+			ga('send', 'event', 'search', 'search', indexLayoutView.ui.searchInput.val());
 
 			var getUrl = '/search?location=' + encodeURIComponent(indexLayoutView.ui.searchInput.val());
 
@@ -52,7 +52,7 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 		saveStatus: function(indexLayoutView, statusModalItemView){
 
-			ga('send', 'event', 'update', '', statusModalItemView.model.get("state"));
+			ga('send', 'event', 'update', 'update', statusModalItemView.model.get("state"));
 
 			var postUrl = "/update";
 			var jqxhr = $.post( postUrl, statusModalItemView.ui.atmStatusForm.serialize(), function(){
