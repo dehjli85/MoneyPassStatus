@@ -132,6 +132,8 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 
 		showFaqs: function(indexLayoutView){
 
+			ga('send', 'event', 'faqs', 'faqs', '');
+
 			var faqsView = new BluebirdStatus.App.FaqsView();
 
 			indexLayoutView.resultsRegion.show(faqsView);
