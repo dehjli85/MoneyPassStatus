@@ -20,4 +20,18 @@ class Atm < ActiveRecord::Base
       }))
   end
 
+  def self.max_id
+		max = Atm.all.pluck(:id).max.nil? ? 0 : Atm.all.pluck(:id).max
+
+		return max
+  end
+
+  def self.exists?(hash)
+  	if Atm.where({street: hash[:street], city: hash[:city], state: hash[:state], postalCode: hash[:postalCode]}).first.nil?
+  		return false
+  	else
+  		return true
+  	end
+  end
+
 end
