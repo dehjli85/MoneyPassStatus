@@ -5,7 +5,7 @@
   </div>
   <div class="modal-body" ui-body-div>
     <div class="row">
-      <div class="col-sm-5 col-sm-offset-3">
+      <div class="col-sm-5 col-sm-offset-4">
         <address>
           <strong> <%= name %></strong><br/>
           <%= street %><br>
@@ -21,17 +21,24 @@
 
       <div class="form-group">
         
-        <label for="inputDate" class="col-sm-3 control-label">Date:</label>
+        <label for="inputDate" class="col-sm-4 control-label">Date:</label>
         
-        <div class="col-sm-7">
+        <div class="col-sm-8">
           <input type="datetime-local" class="form-control" name="date_input" id="inputDate" value="<%= moment().format('YYYY-MM-DDTHH:mm:ss') %>" ui-datetime-input>
         </div>
       </div>
 
       <div class="form-group">
-        <!-- <label for="inputWorking" class="col-sm-3 control-label">Working?:</label> -->
-        <div class="col-sm-3 col-sm-offset-3">
-          <input type="checkbox" name="atm_status[working]" value="true"> &nbsp;Working?
+        <label for="inputWorking" class="col-sm-4 control-label">Working?:</label>
+        <div class="col-sm-8">
+          <input type="checkbox" name="atm_status[working]" value="true">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputComment" class="col-sm-4 control-label">Comment <br/>(optional):</label>
+        <div class="col-sm-8">
+          <textarea name="atm_status[comment]" class="form-control"></textarea>
         </div>
       </div>
 

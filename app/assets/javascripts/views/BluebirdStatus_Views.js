@@ -65,11 +65,21 @@ BluebirdStatus.module("App", function(App, BluebirdStatus, Backbone, Marionette,
 		tagName: "tr",
 
 		ui:{
-			iconLink: "[ui-icon-link]"
+			iconLink: "[ui-icon-link]",
+			commentLink: "[ui-comment-link]"
 		},
 
 		triggers:{
-			"click @ui.iconLink": "open:status:modal"
+			"click @ui.iconLink": "open:status:modal",
+			"click @ui.commentLink": "doNothing"
+		},
+
+		onShow: function(){
+			$('[data-toggle="popover"]').popover()
+		},
+
+		doNothing: function(e){
+			e.preventDefault();
 		}
 
 	});

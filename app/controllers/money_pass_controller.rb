@@ -11,7 +11,7 @@ class MoneyPassController < ApplicationController
 		#find the ATM in the database
 		puts params
 
-    atm_status = AtmStatus.new(params.require(:atm_status).permit(:atm_id, :working, :status_check_date))    
+    atm_status = AtmStatus.new(params.require(:atm_status).permit(:atm_id, :working, :status_check_date, :comment))    
     puts params[:atm_status][:status_check_date]
 	  #   puts params[:atm_status][:date]
 	  #   puts params[:atm_status][:time]

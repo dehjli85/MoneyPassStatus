@@ -13,24 +13,39 @@
 			Update
 		</a>
 	<% }else{ %> 
-		<a class="table__icon-link" ui-icon-link>
+
+
+
 
 			<% if(most_recent_status.working != null) { %>
-				<i class="ion-checkmark-circled success"></i><br/>
+				<i class="ion-checkmark-circled success"></i>
 			<% } else { %>
-				<i class="ion-close-circled fail"></i><br/>
+				<i class="ion-close-circled fail"></i>
 			<% } %>
+
+			<br/>
+
+			
 
 			<span style="color:#999999">
 				<% if(moment().format("MM/DD/YY") == moment(most_recent_status.status_check_date).format("MM/DD/YY")){ %>
-					Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %><br/>
+					Today, <%= moment(most_recent_status.status_check_date).format("h:mm a") %>
 				<% }else{ %> 
-					<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %><br/>
+					<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %>
 				<% } %>
-			</span>
-			Update
 
-		</a>
+				<% if(most_recent_status.comment != null){ %>
+					<a href="#" ui-comment-link data-toggle="popover" data-content="<%= most_recent_status.comment %>" data-placement="top"><i class="ion-document-text" style="font-size:16px"></i></a>
+				<% } %>
+
+				<br/>
+			</span>
+
+			<a class="table__icon-link" ui-icon-link>
+
+				Update
+
+			</a>
 			
 	<% } %>
 </td>
