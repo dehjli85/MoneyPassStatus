@@ -34,7 +34,7 @@
 					<%= moment(most_recent_status.status_check_date).format("MM/DD/YY h:mm a") %>
 				<% } %>
 
-				<% if(most_recent_status.comment != null){ %>
+				<% if(most_recent_status.comment != null && most_recent_status.comment.trim() != ''){ %>
 					<a href="#" ui-comment-link data-toggle="popover" data-content="<%= most_recent_status.comment %>" data-placement="top"><i class="ion-document-text" style="font-size:16px"></i></a>
 				<% } %>
 
