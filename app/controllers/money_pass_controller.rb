@@ -59,7 +59,24 @@ class MoneyPassController < ApplicationController
 
 		end
 
-		atms = Atm.find(ids).as_json
+		# pull atms from db
+		atms_from_moneypass_search = Atm.find(ids)
+
+		# find min and max zipcode
+		max_zip = atms_from_moneypass_search[0].postalCode
+		min_zip = atms_from_moneypass_search[0].postalCode
+
+		atms_from_moneypass_search.each do |atm|
+			if max_zip.to_i < atm.postalCode.to_i
+				max_zip = atm.postalCode
+			end
+
+			if min_zip.to_i > atm.postalCode.to_i
+				min_zip = atm.postalCode
+			end			
+		end
+
+		atms = Atm.where("cast(\"postalCode\" as integer) between ? and ?", min_zip, max_zip).as_json
 
 		render json: {atms: atms}
 
