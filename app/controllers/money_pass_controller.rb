@@ -76,7 +76,7 @@ class MoneyPassController < ApplicationController
 			end			
 		end
 
-		atms = Atm.where("cast(\"postalCode\" as integer) between ? and ?", min_zip, max_zip).as_json
+		atms = Atm.where("cast(\"postalCode\" as integer) between ? and ?", min_zip.to_i - 10, max_zip.to_i + 10).as_json
 
 		render json: {atms: atms}
 
